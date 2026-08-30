@@ -1,0 +1,228 @@
+{
+  "release": "agent-verification-v2.4",
+  "release_type": "release-hardening",
+  "created_utc": "2026-08-30T07:10:58.038771+00:00",
+  "local_verification": {
+    "command": "python -m pytest -q",
+    "return_code": 0,
+    "result": "PASS",
+    "output": "\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m           [100%]\u001b[0m\n\u001b[32m\u001b[32m\u001b[1m62 passed\u001b[0m\u001b[32m in 0.14s\u001b[0m\u001b[0m\nSpreadsheet runtime warmup failed during python startup\nTraceback (most recent call last):\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py\", line 26, in warm_spreadsheet_runtime_on_startup\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 785, in warm_spreadsheet_runtime\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 720, in _warm_feature_flows\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 704, in _warm_collaboration_flows\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/generated/interface/models.py\", line 32317, in hydrate_crdt_from_proto\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/rpc/remote.py\", line 749, in __call__\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/rpc/client.py\", line 150, in call\nartifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document."
+  },
+  "previously_established_external_evidence": {
+    "v2.3_black_box_suite": "62/62 passed",
+    "aws_codebuild": "SUCCEEDED (previously executed build)",
+    "aws_codeconnections": "AVAILABLE (previously verified)",
+    "cloudformation": "CREATE_COMPLETE (previously verified)"
+  },
+  "scope_note": "This release-hardening step does not claim a new GitHub Actions or AWS execution. Those external results are carried forward as prior evidence and must be rerun in the release environment to constitute a fresh release execution.",
+  "files": [
+    {
+      "path": ".pytest_cache/.gitignore",
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd"
+    },
+    {
+      "path": ".pytest_cache/CACHEDIR.TAG",
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4"
+    },
+    {
+      "path": ".pytest_cache/README.md",
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad"
+    },
+    {
+      "path": ".pytest_cache/v/cache/lastfailed",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "path": ".pytest_cache/v/cache/nodeids",
+      "sha256": "361db8959eed2ddf30a03bf3045c501bd3d4fcddff0d89c820001c9ef27aad00"
+    },
+    {
+      "path": "README.md",
+      "sha256": "0cd355c7b75a14709ddac9f21994524f90a4ac0f93c6c73a4a303a0eb25535d6"
+    },
+    {
+      "path": "TEST_RESULT.txt",
+      "sha256": "322cd490843e423f4e15326fd2c7e9583ff7c2eb52f9cedc77306f6db18a7852"
+    },
+    {
+      "path": "dfa/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "dfa/__pycache__/__init__.cpython-313.pyc",
+      "sha256": "f02352ef255ac234ffb7a763f8eaa4891f4e5f6f3b1a9936cbfe585308e07b23"
+    },
+    {
+      "path": "dfa/__pycache__/controller.cpython-313.pyc",
+      "sha256": "7b8ddfebbc98862959b9475629b9a55833309d9be1390a339982ee755a5a52b1"
+    },
+    {
+      "path": "dfa/__pycache__/events.cpython-313.pyc",
+      "sha256": "2e379719695aeed1d9ed3c0a9be51321f20efe3fc74eb01b87cd60d6ffc67fd0"
+    },
+    {
+      "path": "dfa/__pycache__/states.cpython-313.pyc",
+      "sha256": "f76d49242c42caeab954c6445dd4a8d9b59ac03bb1b6a9d4589be5ace049ce0e"
+    },
+    {
+      "path": "dfa/__pycache__/transitions.cpython-313.pyc",
+      "sha256": "4fc49bb12dabfbd9422ce175a9bb0858e9d755bdf598fd43ba83f52d550b2791"
+    },
+    {
+      "path": "dfa/controller.py",
+      "sha256": "2d1eac6168a1cec364d84bb35cc3c7ff62f45d0df37811c9f8504b7d4e80e6aa"
+    },
+    {
+      "path": "dfa/events.py",
+      "sha256": "a544a440b7112e67d91ceeea4d1df8862e28b3bd268e888166c10f27f2690bd7"
+    },
+    {
+      "path": "dfa/states.py",
+      "sha256": "edc25681e98cb60c8f669578a81d9a51759946f5fad8dcc31ca757fc45291866"
+    },
+    {
+      "path": "dfa/transitions.py",
+      "sha256": "8e43d81ead71197811a289438a6cc8086dd55d3c3fce23ad621a5848b7bd40f9"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "6acc879bfa32eb517df506a937085035b9a8e2c9cb13bf8b1a0cfcf01e4d100a"
+    },
+    {
+      "path": "tests/__pycache__/test_blackbox_e2e.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "43ca021097cea862b24f4e985f5697086b94df22a4add7c335997b285e17817e"
+    },
+    {
+      "path": "tests/__pycache__/test_codebuild_evidence.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "a30ba0d13c8c7868d0e1f1aaa4ed266e092941cc256a899732132340e803eebb"
+    },
+    {
+      "path": "tests/__pycache__/test_controlled_execution.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "6930eada1e2d54efee9d180d11a17ecd6a94456273e62b6f221e417f0d5740be"
+    },
+    {
+      "path": "tests/__pycache__/test_evidence.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "b6566d610e6f9ab1598d57896d7ab376b607b76dfb03ed3efe8b822dceea6325"
+    },
+    {
+      "path": "tests/__pycache__/test_evidence_dfa.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "801c5767688271b1954b21e4a50b05cdcecacc187666b83018c1782c0e3424b6"
+    },
+    {
+      "path": "tests/__pycache__/test_execution_loop.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "b729d70367cb1130f080179b9b7fb80ceb21b207e967e1408ce735ab29dc1922"
+    },
+    {
+      "path": "tests/__pycache__/test_failure_classification.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "497c8be322fd6f771f4cacb23a23919b646d0109ec5def691bfed652f81349c5"
+    },
+    {
+      "path": "tests/__pycache__/test_integration_pipeline.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "d7abee928bcde332d098cd0291780d3b8fcf36f11a9bce7abe2d978f885d05e1"
+    },
+    {
+      "path": "tests/__pycache__/test_user_intervention.cpython-313-pytest-9.0.2.pyc",
+      "sha256": "ae8e4e376ea6e1e71f71b2aa823d1889558955d86ff74e5052707426a075425c"
+    },
+    {
+      "path": "tests/test_blackbox_e2e.py",
+      "sha256": "1442854c282f0a4acc950a643c361fddc6e11a20bed82691ecb2e007b2bce5b1"
+    },
+    {
+      "path": "tests/test_codebuild_evidence.py",
+      "sha256": "361378c75abca5f86cad77704efc6ebfee2bf049be6c254fd283caf09a28a77c"
+    },
+    {
+      "path": "tests/test_controlled_execution.py",
+      "sha256": "e53822ae5b484163c395615e94dd1f74009869457d86aa4303bcdd14cf8cb395"
+    },
+    {
+      "path": "tests/test_evidence.py",
+      "sha256": "d432cb2e0f33de66c3a62d99451164050c2f7f4c9fc4364c383ab7332c807cbd"
+    },
+    {
+      "path": "tests/test_evidence_dfa.py",
+      "sha256": "6b55ee3ae193a8b5cdcec419788406e221ee559ae8afd5b0a211926cfebd192c"
+    },
+    {
+      "path": "tests/test_execution_loop.py",
+      "sha256": "d152f0034b15d422852acc0529b2bf1c9263f4ec3308bf05f7111f8370081fbe"
+    },
+    {
+      "path": "tests/test_failure_classification.py",
+      "sha256": "1fbdea3da721c3eb76adb9213d78edf651a1be3d18afddf12374f87c097ef4cb"
+    },
+    {
+      "path": "tests/test_integration_pipeline.py",
+      "sha256": "b5543482a40646340f88c53eed8172b3d3c6b385151a56ae68151132a44209b5"
+    },
+    {
+      "path": "tests/test_user_intervention.py",
+      "sha256": "4279c279f9c66e61ac4011cdbad264bfd332a10f3f1b00244664d8a10414f5c5"
+    },
+    {
+      "path": "verification/__pycache__/codebuild_evidence.cpython-313.pyc",
+      "sha256": "236cb2b2a3ed32f75c7acc2d7dedfef8bd30e82f293397717186dc9d3200360c"
+    },
+    {
+      "path": "verification/__pycache__/controlled_execution.cpython-313.pyc",
+      "sha256": "7843d46a97c5acefcc34661d5196b9d642a0f434f0bd1f1805ca776cc08cdbc0"
+    },
+    {
+      "path": "verification/__pycache__/evidence.cpython-313.pyc",
+      "sha256": "04f1bfca9bbf4dd428f4f49def5e4b8726ded84ad045c76298500a54b06549ea"
+    },
+    {
+      "path": "verification/__pycache__/execution_loop.cpython-313.pyc",
+      "sha256": "cda8f940492893fbadad67bf7b105f1a3010274d44526381433e0b60a718679a"
+    },
+    {
+      "path": "verification/__pycache__/failure_classification.cpython-313.pyc",
+      "sha256": "f390cb407ac95409e4f4bd4d0d0a1e8c5287c0ffaca97f65497947d07de80e07"
+    },
+    {
+      "path": "verification/__pycache__/integration.cpython-313.pyc",
+      "sha256": "dffc27e0d2438c3895decaa6f3199dffe06280807b055ef78c472915aad18173"
+    },
+    {
+      "path": "verification/__pycache__/recovery.cpython-313.pyc",
+      "sha256": "5ebb55de19f9ec9012b36b93270049b2f26a0530d0de3bd5598ac2d519e8e2d5"
+    },
+    {
+      "path": "verification/__pycache__/user_intervention.cpython-313.pyc",
+      "sha256": "db4abdc5c3ab33a2bacb5c112eede62683e0eb799f3f7f9b2666a17650136406"
+    },
+    {
+      "path": "verification/codebuild_evidence.py",
+      "sha256": "2333467eb67a4a35aad793c7c52e610a00de336545b446320470188440b843f9"
+    },
+    {
+      "path": "verification/controlled_execution.py",
+      "sha256": "f59fdb698a62fe19187baf840e913741ee2f31c0a5d3fa853c6fd30098093d2e"
+    },
+    {
+      "path": "verification/evidence.py",
+      "sha256": "2db0802c5d3b9a7d409320483da8386f56c4fdcef7b4795d898729479d65f013"
+    },
+    {
+      "path": "verification/execution_loop.py",
+      "sha256": "202a61442a49c8f8a45d092e64203f8a6e60490f4573230653931f3eb07e2a51"
+    },
+    {
+      "path": "verification/failure_classification.py",
+      "sha256": "631f2bcf82e6168ef83264ed9a0b0410f182cdf8467f5b2f8ea1d10d40604a92"
+    },
+    {
+      "path": "verification/integration.py",
+      "sha256": "0d0f4d1b9a4925bdce12f82c76962740b3f2ce68084fced0776388ff4165dadc"
+    },
+    {
+      "path": "verification/recovery.py",
+      "sha256": "0dd4efec2c6f2b5889c5a47aeb9709c884e0b89a5765b30b0c7380f5016c9d4f"
+    },
+    {
+      "path": "verification/user_intervention.py",
+      "sha256": "2bf476f32da72c1952d91630f7104edd4ed56293173a10a600ee10056264fd75"
+    }
+  ]
+}
