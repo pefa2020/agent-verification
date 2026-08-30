@@ -1,0 +1,52 @@
+name: Agent Verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install verification dependency
+        run: python -m pip install --upgrade pytest
+
+      - name: Run DFA and integration tests
+        run: python -m pytest -q
+
+      - name: Run verification contract
+        id: verification
+        continue-on-error: true
+        run: python verification/run.py
+
+      - name: Upload verification result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-result-${{ github.run_id }}
+          path: verification-result.json
+          if-no-files-found: error
+
+      - name: Enforce verification result
+        if: steps.verification.outcome == 'failure'
+        run: |
+          echo "Verification result: FAIL"
+          exit 1
+
+      - name: Report verification result
+        if: steps.verification.outcome == 'success'
+        run: |
+          echo "Verification result: PASS"
