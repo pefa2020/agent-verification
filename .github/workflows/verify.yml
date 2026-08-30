@@ -8,6 +8,7 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
 
@@ -47,4 +48,5 @@ jobs:
 
       - name: Report verification result
         if: steps.verification.outcome == 'success'
-        run: echo "Verification result: PASS"
+        run: |
+          echo "Verification result: PASS"
