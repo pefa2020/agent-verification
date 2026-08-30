@@ -1,0 +1,12 @@
+version: "1.0"
+
+mandatory_criteria:
+  - build
+  - tests
+  - integration
+  - smoke
+
+outcomes:
+  PASS: VERIFY_PASS
+  FAIL: VERIFY_FAIL
+  BLOCKED: VERIFY_BLOCKED

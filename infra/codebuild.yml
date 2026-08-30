@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Agent Verification CodeBuild execution boundary.
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: agent-verification
+  SourceLocation:
+    Type: String
+    Description: GitHub HTTPS repository URL, e.g. https://github.com/OWNER/REPO
+  CodeConnectionsArn:
+    Type: String
+    Description: ARN of an existing AWS CodeConnections connection authorized for the GitHub repository.
+  ComputeType:
+    Type: String
+    Default: BUILD_GENERAL1_SMALL
+    AllowedValues:
+      - BUILD_GENERAL1_SMALL
+      - BUILD_GENERAL1_MEDIUM
+      - BUILD_GENERAL1_LARGE
+
+Resources:
+  CodeBuildServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "${ProjectName}-codebuild-role"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - codebuild.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: CodeBuildLogs
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - codeconnections:GetConnectionToken
+                  - codeconnections:GetConnection
+                Resource: !Ref CodeConnectionsArn
+
+  CodeBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Ref ProjectName
+      ServiceRole: !GetAtt CodeBuildServiceRole.Arn
+      Source:
+        Type: GITHUB
+        Location: !Ref SourceLocation
+        Auth:
+          Type: CODECONNECTIONS
+          Resource: !Ref CodeConnectionsArn
+        BuildSpec: verification/aws_buildspec.yml
+      Artifacts:
+        Type: NO_ARTIFACTS
+      Environment:
+        Type: LINUX_CONTAINER
+        Image: aws/codebuild/standard:7.0
+        ComputeType: !Ref ComputeType
+        PrivilegedMode: false
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Sub "/aws/codebuild/${ProjectName}"
+          StreamName: verification
+      TimeoutInMinutes: 30
+
+Outputs:
+  CodeBuildProjectName:
+    Value: !Ref CodeBuildProject
+  CodeBuildServiceRoleArn:
+    Value: !GetAtt CodeBuildServiceRole.Arn
