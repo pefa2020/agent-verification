@@ -1,7 +1,7 @@
-# Agent Verification v2.3
+# Agent Verification v2.5
 
 Black-box end-to-end verification of the externally observable execution
-contract.
+contract, with adversarial boundary regression coverage.
 
 The black-box suite does not inspect the DFA implementation or call internal
 transition functions. It supplies external attempt outcomes and optional user
@@ -18,3 +18,7 @@ Covered externally:
 - explicit abort;
 - clarification preserves execution history;
 - no user response means no silent continuation.
+
+v2.5 additionally hardens the verification boundary with adversarial regression
+coverage for illegal DFA transitions, terminal-state mutation attempts,
+malformed evidence types, and invalid run/commit identifiers.
