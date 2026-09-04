@@ -14,3 +14,4 @@ def test_invariant_results_are_deterministic():
     first = run_all()
     second = run_all()
     assert first == second
+    assert first == second
