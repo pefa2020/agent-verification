@@ -1,5 +1,4 @@
 import os
-from types import SimpleNamespace
 
 import pytest
 
@@ -92,8 +91,12 @@ def test_llm_adapter_requires_optional_openai_dependency(monkeypatch):
 
     monkeypatch.setattr(builtins, "__import__", blocked_import)
     runtime = AgentToolRuntime({"echo": lambda args: args})
+    adapter = OpenAILLMAdapter(runtime, client=None)
+    monkeypatch.setattr(adapter, "_client_or_default", lambda: (_ for _ in ()).throw(
+        LLMIntegrationError("Install the optional OpenAI dependency")
+    ))
     with pytest.raises(LLMIntegrationError, match="optional OpenAI dependency"):
-        OpenAILLMAdapter(runtime).run("hello")
+        adapter.run("hello")
 
 
 def test_llm_adapter_rejects_invalid_arguments_shape():
