@@ -1,5 +1,6 @@
 import pytest
 
+from dfa.events import Event
 from dfa.states import State
 from verification.agent_tool_runtime import AgentToolError, AgentToolRuntime, ToolRequest
 
@@ -22,7 +23,7 @@ def test_agent_tool_call_is_allowed_only_in_build():
     runtime.start()
     with pytest.raises(AgentToolError):
         runtime.execute_tool(ToolRequest("echo", {"value": "blocked"}))
-    runtime.mark_build_ready()
+    runtime.controller.dispatch(Event.BUILD_READY)
     result = runtime.execute_tool(ToolRequest("echo", {"value": "allowed"}))
     assert result.success is True
     assert result.output == "allowed"
