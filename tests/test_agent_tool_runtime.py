@@ -4,9 +4,10 @@ from dfa.states import State
 from verification.agent_tool_runtime import AgentToolError, AgentToolRuntime, ToolRequest
 
 
-def evidence(status="PASS", run_id="agent-run-1", commit="abc123", **criteria):
+def evidence(status="PASS", run_id="agent-run-1", commit="abc123", criteria=None):
     values = {"build": "PASS", "tests": "PASS", "integration": "PASS", "smoke": "PASS"}
-    values.update(criteria)
+    if criteria:
+        values.update(criteria)
     return {
         "schema_version": "1.0",
         "status": status,
