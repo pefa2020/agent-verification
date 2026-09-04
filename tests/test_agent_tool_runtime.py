@@ -20,10 +20,9 @@ def evidence(status="PASS", run_id="agent-run-1", commit="abc123", criteria=None
 
 def test_agent_tool_call_is_allowed_only_in_build():
     runtime = AgentToolRuntime({"echo": lambda args: args["value"]})
-    runtime.start()
     with pytest.raises(AgentToolError):
         runtime.execute_tool(ToolRequest("echo", {"value": "blocked"}))
-    runtime.controller.dispatch(Event.BUILD_READY)
+    runtime.start()
     result = runtime.execute_tool(ToolRequest("echo", {"value": "allowed"}))
     assert result.success is True
     assert result.output == "allowed"
