@@ -1,0 +1,3 @@
+# Optional dependencies for live v3.4 integration tests.
+boto3
+openai
